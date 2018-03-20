@@ -2,18 +2,58 @@
 
 namespace Modul6
 {
-
-    class Program
+    class Triangle
     {
-        static void Main(string[] args)
+        double _x;
+        double _y;
+        double _z;
+
+        public Triangle(double x, double y, double z)
+        {
+            _x = x;
+            _y = y;
+            _z = z;
+
+        }
+        public override string ToString()
+        {
+            return $"I'm a triangle where side 1={_x}, side 2={_y}, side 3={_z}";
+        }
+
+    }
+    internal class Program
+    {
+        private static void Main(string[] args)
         {
             // Cirkel();
             // Kub();
 
+            Override();
+
+
         }
 
+        private static void Override()
+        {
 
-        static void Kub()
+            Console.WriteLine();
+
+            Cirkel cirkel = new Cirkel(3);
+
+            var x = cirkel.ToString();
+
+            Console.WriteLine(x);
+
+            var rectangle = new Rectangle(12,16);
+
+            var y = rectangle.ToString();
+
+            Console.WriteLine(y);
+
+            Console.WriteLine();
+        }
+
+        private static void Kub()
         {
             Kub mycube = new Modul6.Kub(2, 3, 4);
             Kub supercube = new Kub(100, 200, 300);
@@ -34,7 +74,7 @@ namespace Modul6
 
         }
 
-        static void Cirkel()
+        private static void Cirkel()
         {
             Cirkel bob = new Cirkel("Bob", 8);
             Cirkel lisa = new Cirkel("Lisa", 30);
