@@ -3,6 +3,8 @@
 
 *.vs
 *.sln
+*.csproj
+.gitignore
 Udemy/
 Inlämning 1/
 Checkpoint/
