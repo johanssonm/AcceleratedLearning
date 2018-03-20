@@ -2,40 +2,70 @@
 
 namespace Modul6
 {
-    class Cirkel
+    class Kub
     {
-        public string _name;
-        public double _radie;
-        public Cirkel(string name, double radie)
+        double _volym;
+        double _area;
+
+        public Kub(double x, double y, double z)
         {
-            _name = name;
-            _radie = radie;
+            _volym = Math.Abs(x * y * z);
+            _area = Math.Abs(2 * (Math.Abs(x * z) + Math.Abs(x * y ) + Math.Abs(y * z)));
+            _area = Math.Abs(2 * (Math.Abs(x * z) + Math.Abs(x * y ) + Math.Abs(y * z)));
+        }
+
+        public double Volym
+        {
+            get { return _volym; }
         }
 
         public double Area
         {
-            get { return Math.Round(_radie * _radie * Math.PI,2); }
+            get { return _area; }
         }
 
-        public string Name
+        public void WriteVolume()
         {
-            get { return _name; }
-        }
-
-        public void SayHello()
-        {
-            Console.WriteLine($"I'm a circle with the name of {_name}!");
+            Console.WriteLine($"The volume of the cube is {_volym}!");
         }
 
         public void WriteArea()
         {
-            Console.WriteLine($"My name is {_name}. I have a radius of {_radie} and an area of " + Area + "!");
+            Console.WriteLine($"The are of the cube is {_area}!");
         }
-
     }
-    class Program
+
+        class Program
     {
         static void Main(string[] args)
+        {
+            // Cirkel();
+            Kub();
+
+        }
+
+
+        static void Kub()
+        {
+            Kub mycube = new Modul6.Kub(2, 3, 4);
+            Kub supercube = new Kub(100, 200, 300);
+
+            mycube.WriteVolume();
+            var x1 = mycube.Volym;
+            var x2 = mycube.Area;
+            Console.WriteLine(x2);
+
+            Console.WriteLine();
+
+            supercube.WriteVolume();
+            var y = supercube.Volym;
+            Console.WriteLine(y);
+
+            Console.WriteLine();
+
+        }
+
+        static void Cirkel()
         {
             Cirkel bob = new Cirkel("Bob", 8);
             Cirkel lisa = new Cirkel("Lisa", 30);
@@ -51,5 +81,7 @@ namespace Modul6
             Console.WriteLine();
 
         }
+
+
     }
 }
