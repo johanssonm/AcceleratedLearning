@@ -63,8 +63,8 @@ namespace Modul6
              //Override();
              // Person();
 
-            Gatuadress();
-           // SetAccessor();
+            // Gatuadress();
+                SetAccessor();
 
 
         }
