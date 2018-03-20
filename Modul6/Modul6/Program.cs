@@ -2,45 +2,13 @@
 
 namespace Modul6
 {
-    class Kub
-    {
-        double _volym;
-        double _area;
 
-        public Kub(double x, double y, double z)
-        {
-            _volym = Math.Abs(x * y * z);
-            _area = Math.Abs(2 * (Math.Abs(x * z) + Math.Abs(x * y ) + Math.Abs(y * z)));
-            _area = Math.Abs(2 * (Math.Abs(x * z) + Math.Abs(x * y ) + Math.Abs(y * z)));
-        }
-
-        public double Volym
-        {
-            get { return _volym; }
-        }
-
-        public double Area
-        {
-            get { return _area; }
-        }
-
-        public void WriteVolume()
-        {
-            Console.WriteLine($"The volume of the cube is {_volym}!");
-        }
-
-        public void WriteArea()
-        {
-            Console.WriteLine($"The are of the cube is {_area}!");
-        }
-    }
-
-        class Program
+    class Program
     {
         static void Main(string[] args)
         {
             // Cirkel();
-            Kub();
+            // Kub();
 
         }
 
@@ -53,13 +21,14 @@ namespace Modul6
             mycube.WriteVolume();
             var x1 = mycube.Volym;
             var x2 = mycube.Area;
-            Console.WriteLine(x2);
+            Console.WriteLine($"Volume {x1} and area {x2}");
 
             Console.WriteLine();
 
             supercube.WriteVolume();
-            var y = supercube.Volym;
-            Console.WriteLine(y);
+            var y1 = supercube.Volym;
+            var y2 = supercube.Area;
+            Console.WriteLine($"Volume {y1} and area {y2}");
 
             Console.WriteLine();
 
