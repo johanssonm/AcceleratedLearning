@@ -1,37 +1,143 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Linq;
+using System.Collections.Generic;
+using System.Net.Sockets;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Modul6
 {
-    class Triangle
+    public class Adress
     {
-        double _x;
-        double _y;
-        double _z;
+        public string Street;
+        public int StreetNumber;
+        public string City;
+        public string ZipCode;
+        public string FullStreet;
 
-        public Triangle(double x, double y, double z)
+        public void SetStreet(string street, int streetnumber)
         {
-            _x = x;
-            _y = y;
-            _z = z;
+            Street = street;
+            StreetNumber = streetnumber;
 
         }
-        public override string ToString()
+
+        public void SetCity(string city)
         {
-            return $"I'm a triangle where side 1={_x}, side 2={_y}, side 3={_z}";
+            City = city;
+
         }
+
+        public void SetZip(string zip)
+        {
+            if (ValidateZip(zip))
+            {
+                ZipCode = zip;
+            }
+
+        }
+
+        public string GetFullStreet()
+        {
+           return $"{Street} {StreetNumber}" ;
+        }
+
+        public bool  ValidateZip(string zip)
+        {
+
+            var pattern = (@"^{3}[0-9\s]{2}[0-9]");
+
+            return Regex.IsMatch(zip,pattern);
+
+            }
 
     }
-    internal class Program
+    class Program
     {
+
         private static void Main(string[] args)
         {
             // Cirkel();
             // Kub();
+             //Override();
+             // Person();
 
-            Override();
+            Gatuadress();
+           // SetAccessor();
 
 
         }
+
+        private static void SetAccessor()
+        {
+
+            Console.WriteLine();
+
+
+            Console.WriteLine();
+
+            Console.WriteLine("Street" + "\t\t\t");
+
+            Console.WriteLine();
+        }
+
+        private static void Gatuadress()
+        {
+
+            Adress adress = new Adress();
+            adress.SetStreet("Göteborgsvägen", 44);
+            adress.SetCity("Göteborg");
+            adress.SetZip("123 45");
+            var fullstreet = adress.GetFullStreet();
+
+            Console.WriteLine();
+            Console.WriteLine("Street" + "\t\t\t" + adress.Street);
+            Console.WriteLine("Street number" + "\t\t" + adress.StreetNumber);
+            Console.WriteLine("City" + "\t\t\t" + adress.City);
+            Console.WriteLine("Zip" + "\t\t\t" + adress.ZipCode);
+            Console.WriteLine("Full street" + "\t\t" + fullstreet);
+
+            Console.WriteLine();
+        }
+
+        private static void Person()
+        {
+
+            Console.WriteLine();
+    
+            Person lisa = new Person();
+                
+            lisa.MakePerson("Lisa", "Namnsson");
+            lisa.Gender = Modul6.Person.SetGender.Female;
+            lisa.Sport = Sport.Soccer;
+
+            var lisaName = lisa.FirstName + " " + lisa.LastName;
+            var lisaGender = lisa.Gender;
+            var lisaSport = lisa.Sport;
+
+            Console.WriteLine(lisaName);
+            Console.WriteLine(lisaGender);
+            Console.WriteLine(lisaSport);
+
+            Console.WriteLine();
+
+            foreach (var sport in Enum.GetValues(typeof(Sport)) )
+            {
+                Console.WriteLine($"* {sport}");
+            }
+
+            var list = Enum.GetNames(typeof(Sport)).ToList();
+
+            list = list.Select((item) => item.ToLower()).ToList();
+
+            list.Contains("tennis");
+
+            String input = Console.ReadLine();
+
+            Console.WriteLine();
+        }
+
 
         private static void Override()
         {
@@ -49,6 +155,14 @@ namespace Modul6
             var y = rectangle.ToString();
 
             Console.WriteLine(y);
+
+            Console.WriteLine();
+
+            var triangle = new Triangle(5,7);
+
+            var z = rectangle.ToString();
+
+            Console.WriteLine(z);
 
             Console.WriteLine();
         }
