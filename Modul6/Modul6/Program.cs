@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using System.Linq;
 using System.Collections.Generic;
@@ -31,9 +32,17 @@ namespace Modul6
 
         public void SetZip(string zip)
         {
-            if (ValidateZip(zip))
+            if (ValidateZip(zip) == true)
             {
                 ZipCode = zip;
+            }
+
+            
+
+            else
+            {
+                var format = zip.Trim();
+                ZipCode = format.Insert(3, " ");
             }
 
         }
@@ -46,7 +55,7 @@ namespace Modul6
         public bool  ValidateZip(string zip)
         {
 
-            var pattern = (@"^{3}[0-9\s]{2}[0-9]");
+            var pattern = (@"^{3}[0-9]{1}[\s]{2}[0-9]");
 
             return Regex.IsMatch(zip,pattern);
 
@@ -63,7 +72,7 @@ namespace Modul6
              //Override();
              // Person();
 
-            // Gatuadress();
+               // Gatuadress();
                 SetAccessor();
 
 
@@ -71,13 +80,22 @@ namespace Modul6
 
         private static void SetAccessor()
         {
-
+            Adress adress = new Adress();;
             Console.WriteLine();
+            
+            Console.WriteLine("Try set zipcode to \t 111 22");
+            adress.SetZip("111 22");
 
+            Console.WriteLine($"Zipcode \t\t {adress.ZipCode}");
+            Console.WriteLine("Try set zipcode to \t 22222");
+            adress.SetZip("22222");
 
-            Console.WriteLine();
+            Console.WriteLine($"Zipcode \t\t {adress.ZipCode}");
+            Console.WriteLine("Try set zipcode to \t HELLO");
+            adress.SetZip("HELLO");
 
-            Console.WriteLine("Street" + "\t\t\t");
+            Console.WriteLine($"Zipcode \t\t {adress.ZipCode}");
+
 
             Console.WriteLine();
         }
@@ -88,7 +106,7 @@ namespace Modul6
             Adress adress = new Adress();
             adress.SetStreet("Göteborgsvägen", 44);
             adress.SetCity("Göteborg");
-            adress.SetZip("123 45");
+            adress.SetZip("12345");
             var fullstreet = adress.GetFullStreet();
 
             Console.WriteLine();
